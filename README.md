@@ -1,79 +1,84 @@
-# India Electricity Time Series Analysis (2015–2025)
+# EV Charging Infrastructure Analytics – India
 
 ## Project Overview
 
-This project investigates the determinants of regional electricity shortages in India between 2015 and 2025. It examines the relationship between coal availability, distribution inefficiencies, generation performance, renewable energy penetration, demand conditions and electricity supply deficits.
+This project focuses on identifying investment opportunities for electric vehicle (EV) charging infrastructure expansion across India. It uses unsupervised machine learning to segment Indian states and union territories based on EV adoption, charging infrastructure availability, market size and growth momentum.
 
-The study uses monthly data covering 36 Indian states and union territories, comprising 4,752 observations across 132 months.
+The objective is to identify underserved markets and develop data-driven investment priorities for charging infrastructure expansion.
 
 ## Project Objectives
 
-- Identify trend, seasonal and irregular patterns in electricity shortages.
-- Examine stationarity and short-run time series dynamics.
-- Develop forecasting models to analyse electricity shortage patterns.
-- Investigate volatility in energy market returns.
-- Establish the long-run relationship between coal availability and electricity shortages.
-- Translate statistical findings into policy implications for India's energy sector.
+- Analyse state-wise EV adoption and charging infrastructure availability.
+- Identify disparities between EV demand and charging station supply.
+- Segment states based on their EV ecosystem characteristics.
+- Identify underserved markets with infrastructure gaps.
+- Develop investment priorities for EV charging infrastructure expansion.
 
 ## Dataset Overview
 
-The analysis uses eight variables:
+The analysis integrates three government-sourced datasets:
 
-- Shortage Percentage
-- Coal Stock Days
-- ATC Loss Percentage
-- Plant Load Factor
-- Renewable Energy Share
-- Nifty Energy Returns
-- Average Temperature Index
-- Import Dependency
+- EV Sales by State (2014–2024)
+- Operational Public Charging Stations
+- State Population Data
 
-**Dataset Coverage:** January 2015 – December 2025  
-**Geographical Coverage:** 36 Indian States and Union Territories  
-**Observations:** 4,752
+**Final Analytical Dataset:**
+- 31 States and Union Territories
+- 8 Engineered Features
+- 0 Missing Values
 
 ## Tools & Technologies
 
-- R Programming
-- Time Series Analysis
-- ARIMA Modelling
-- ARCH and GARCH Models
-- Statistical Hypothesis Testing
+- Python
+- Pandas and NumPy
+- Scikit-learn
+- Principal Component Analysis (PCA)
+- K-Means Clustering
 - Data Visualisation
+- Unsupervised Machine Learning
 
 ## Methodology
 
-### 1. Time Series Decomposition
-Applied classical additive and multiplicative decomposition, along with STL decomposition, to identify trend, seasonal and irregular components.
+### 1. Data Collection and Integration
+Combined EV sales, public charging station and population datasets using a common state-level geographic key.
 
-### 2. Stationarity Testing
-Used three statistical tests:
-- Augmented Dickey-Fuller (ADF)
-- KPSS Test
-- Phillips-Perron (PP) Test
+### 2. Data Cleaning and Validation
+Standardised state boundaries, reconciled geographic inconsistencies and validated the datasets against published government totals.
 
-### 3. AR, MA and ARIMA Modelling
-Developed autoregressive, moving average and ARIMA models to capture short-run dynamics and generate forecasts.
+### 3. Feature Engineering
+Developed eight analytical features covering:
+- EV adoption intensity
+- Market size
+- Vehicle category composition
+- Charging infrastructure density
+- EV-to-charging-station ratio
+- Market growth momentum
 
-### 4. Volatility Modelling
-Conducted ARCH-LM testing to identify volatility clustering and applied ARCH(1) and GARCH(1,1) models to examine conditional volatility in energy market returns.
+### 4. Principal Component Analysis (PCA)
+Applied PCA to reduce dimensionality and address correlations among the eight engineered features.
 
-### 5. Cointegration and Error Correction Model
-Applied the Engle-Granger approach to investigate the long-run relationship between coal stock availability and electricity shortages, followed by an Error Correction Model (ECM).
+The first three principal components retained 81.4% of the total variance.
 
-## Key Findings
+### 5. K-Means Clustering
+Applied K-Means clustering to segment states according to their EV ecosystem characteristics. Four clusters were selected by balancing clustering performance with business interpretability.
 
-- Coal stock days demonstrated a strong negative relationship with electricity shortages.
-- The long-run regression reported an R² of 0.944.
-- The ECM adjustment coefficient was -0.941, indicating rapid correction of long-run disequilibrium.
-- The selected ARIMA model was ARIMA(0,1,0)(0,0,2)[12], with a MAPE of 8.07%.
-- ARCH-LM testing confirmed significant volatility clustering in energy market returns.
+### 6. Investment Prioritisation
+Translated the clustering results into investment priority scores and a four-tier action framework to support charging infrastructure expansion decisions.
 
-## Project Deliverables
+## Key Analytical Areas
 
-- R-based analysis and statistical modelling in HTML format.
-- Research report documenting the methodology, results and interpretations.
+- State-wise EV adoption patterns
+- Charging infrastructure availability
+- Demand-supply imbalance
+- Infrastructure coverage gaps
+- EV market growth momentum
+- State segmentation
+- Investment opportunity prioritisation
+
+## Project Deliverable
+
+The repository contains the project presentation documenting the research problem, dataset integration, feature engineering, PCA, clustering methodology and investment prioritisation framework.
 
 ## Conclusion
 
-The study highlights the importance of coal availability in explaining electricity shortage patterns in India. By combining time series forecasting, stationarity testing, volatility modelling and cointegration analysis, the project provides an analytical framework for understanding energy supply dynamics and supporting evidence-based energy planning.
+The project demonstrates how unsupervised machine learning can support strategic infrastructure planning. By combining EV demand, charging infrastructure availability and market growth indicators, the analysis identifies differences across state-level EV ecosystems and provides a structured approach to prioritising future charging infrastructure investments.
